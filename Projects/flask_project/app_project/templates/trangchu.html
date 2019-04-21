@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block title %}Trang chủ{% endblock %}
+
+{% block head %}
+    {{ super() }}
+{% endblock %}
+
+{% block menu %}
+    {{ super() }}
+{% endblock %}
+
+{% block right %}
+    <ul>
+        {% for it in listmonan %}
+        <li>
+        <a href="{{ it.linkMon }}">
+            <img src="{{ it.linkImg }}" style="width: 100px">
+            <h2>{{ it.tenmon }}</h2>
+
+        </a>
+        <p>Với tất cả các công thức nấu ăn được sưu tầm từ các đầu bếp nổi tiếng nhiều năm kinh nghiệm,
+            bạn có thể nấu các món ăn chuẩn nhà hàng.</p>
+
+        </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+{% block body %}
+    {{ super() }}
+{% endblock %}

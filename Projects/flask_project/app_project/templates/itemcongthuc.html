@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block head %}
+    {{ super() }}
+{% endblock %}
+
+{% block menu %}
+
+<div class="menu" style="font-size: 17px">
+
+    <ul>
+        <li>{{ donvicongthuc }}
+            <ul>
+                {% for item in menu %}
+                <li><a href="{{ item.linkdonvi }}">{{ item.name }}</a></li>
+                {% endfor %}
+            </ul>
+        </li>
+
+    </ul>
+
+</div>
+
+{% endblock %}
+
+{% block right%}
+    <ul>
+        {% for it in listmonan %}
+        <li>
+            <a href = "{{ it.linkMon }}">
+                <img src="{{ it.linkImg }}"
+                style="width: 100px">
+            <h2>{{ it.tenmon }}</h2>
+            </a>
+            
+        </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+
+{% block body %}
+    {{ super() }}
+{% endblock %}
