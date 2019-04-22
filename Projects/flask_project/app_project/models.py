@@ -29,6 +29,7 @@ class Thanh_phan(sqldb.Model):
         return "thanh_phan('{self.id}', '{self.name}')"
 
 class Van_hoa(sqldb.Model):
+    __tablename__ = 'van_hoa'
     id = sqldb.Column(sqldb.Integer, primary_key = True)
     name = sqldb.Column(sqldb.String(255), unique = True, nullable = False)
     vhoa = relationship("mon_an", backref="ma_vh")
@@ -37,6 +38,7 @@ class Van_hoa(sqldb.Model):
 
 
 class Mua(sqldb.Model):
+    __tablename__ = '_mua'
     id = sqldb.Column(sqldb.Integer, primary_key = True)
     name = sqldb.Column(sqldb.String(255), unique = True, nullable = False)
     mua = relationship("mon_an", backref="ma_mua")
@@ -44,6 +46,7 @@ class Mua(sqldb.Model):
         return "_mua('{self.id}', '{self.name}')"
 
 class Cach_cb(sqldb.Model):
+    __tablename__ = 'cach_cb'
     id = sqldb.Column(sqldb.Integer, primary_key = True)
     name = sqldb.Column(sqldb.String(255), unique = True, nullable = False)
     cb = relationship("mon_an", backref="ma_cach_cb")
