@@ -12,7 +12,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://{}:{}@localhost:3306/{}
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 sqldb = SQLAlchemy(app)
 
-# from models import mon_an
+from models import Mon_an, Thanh_phan, Van_hoa, Cach_cb, Mua
 
 def getlinkstatic():
 
