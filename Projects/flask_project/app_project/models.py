@@ -10,7 +10,7 @@ from sqlalchemy import ForeignKey
 class Mon_an(sqldb.Model):
     __tablename__ = 'mon_an'
 
-    ma_mon = sqldb.Column(sqldb.Integer, primary_key = True, auto_increment = True)
+    ma_mon = sqldb.Column(sqldb.Integer, primary_key = True)
     ten_mon = sqldb.Column(sqldb.String(255), unique = True, nullable = False)
     image = sqldb.Column(sqldb.String(255), nullable = False)
     cong_thuc = sqldb.Column(sqldb.Text, nullable = False)
@@ -25,7 +25,7 @@ class Mon_an(sqldb.Model):
 
 class Thanh_phan(sqldb.Model):
     __tablename__ = 'thanh_phan'
-    id = sqldb.Column(sqldb.Integer, primary_key = True, auto_increment = True)
+    id = sqldb.Column(sqldb.Integer, primary_key = True)
     name = sqldb.Column(sqldb.String(255), unique = True, nullable = False)
     # ma_nl = relationship("Mon_an", backref="ma_nl")
     def _ma_nl_repr__(self):
@@ -47,7 +47,7 @@ class Van_hoa(sqldb.Model):
 
 class _mua(sqldb.Model):
     __tablename__ = '_mua'
-    id = sqldb.Column(sqldb.Integer, primary_key = True, auto_increment = True)
+    id = sqldb.Column(sqldb.Integer, primary_key = True)
     name = sqldb.Column(sqldb.String(255), unique = True, nullable = False)
     # ma_mua = relationship("Mon_an", backref="ma_mua")
     def __repr__(self):
@@ -58,7 +58,7 @@ class _mua(sqldb.Model):
 
 class Cach_cb(sqldb.Model):
     __tablename__ = 'cach_cb'
-    id = sqldb.Column(sqldb.Integer, primary_key = True, auto_increment = True)
+    id = sqldb.Column(sqldb.Integer, primary_key = True)
     name = sqldb.Column(sqldb.String(255), unique = True, nullable = False)
     # ma_cach_cb = relationship("Mon_an", backref="ma_cach_cb")
     def __repr__(self):

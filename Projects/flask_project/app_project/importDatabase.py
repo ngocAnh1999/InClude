@@ -16,10 +16,10 @@ def importMon_an():
         for i in range(0, max_row - 1):
                 # cell_id = sheet.cell(row = i+2, column = 1)
                 cell = sheet.cell(row = i+2, column = 2)
-                mua = _mua(cell.value)
+                mua = _mua(cell.value.encode('utf-8'))
                 # mua.setValue(cell.value.encode('utf-8'))
                 sqldb.session.add(mua)
-        sqldb.session.commit()
+                sqldb.session.commit()
 
                 
 importMon_an()
