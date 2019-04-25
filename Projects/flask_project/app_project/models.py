@@ -19,31 +19,49 @@ class Mon_an(sqldb.Model):
     ma_vh = sqldb.Column(sqldb.Integer, sqldb.ForeignKey('van_hoa.id'), nullable = True)
     ma_cach_cb = sqldb.Column(sqldb.Integer, sqldb.ForeignKey('cach_cb.id'), nullable = True)
     ma_mua = sqldb.Column(sqldb.Integer, sqldb.ForeignKey('_mua.id'), nullable = True)
-    video = sqldb.Column(sqldb.String(255), nullable = False)
-    def __repr__(self):
-        return '<Mon_an %r>' % self.ten_mon
+    video = sqldb.Column(sqldb.String(255), nullable = True)
+
+    def addMonan(self, ten_mon, image, cong_thuc, nguyen_lieu, ma_nl, ma_vh , ma_cach_cb, ma_mua , video):
+        self.ten_mon = ten_mon
+        self.image = image
+        self.cong_thuc = cong_thuc
+        self.nguyen_lieu = nguyen_lieu
+        self.ma_nl = ma_nl
+        self.ma_vh = ma_vh
+        self.ma_cach_cb = ma_cach_cb
+        self.ma_mua = ma_mua
+        self.video = video
+        sqldb.session.add(self)
+        sqldb.session.commit()
 
 class Thanh_phan(sqldb.Model):
     __tablename__ = 'thanh_phan'
     id = sqldb.Column(sqldb.Integer, primary_key = True)
     name = sqldb.Column(sqldb.String(255), unique = True, nullable = False)
-    # ma_nl = relationship("Mon_an", backref="ma_nl")
-    def _ma_nl_repr__(self):
+
+    def __repr__(self):
         return '<Thanh_phan %r>' % self.name
 
-    def __init__(self, excelValue):
+# func add data to table thanh_phan
+    def addThanhphan(self, excelValue):
+        # thanhphan = Thanh_phan(excelValue)
         self.name = excelValue
-
-
+        sqldb.session.add(self)
+        sqldb.session.commit()
 
 class Van_hoa(sqldb.Model):
     __tablename__ = 'van_hoa'
     id = sqldb.Column(sqldb.Integer, primary_key = True)
     name = sqldb.Column(sqldb.String(255), unique = True, nullable = False)
-    # ma_vh = relationship("Mon_an", backref="ma_vh")
+    
     def __repr__(self):
         return '<Van_hoa %r>' % self.name
 
+# func add data to table Van_hoa
+    def addVanhoa(self, excelValue):
+        self.name = excelValue
+        sqldb.session.add(self)
+        sqldb.session.commit()
 
 class _mua(sqldb.Model):
     __tablename__ = '_mua'
@@ -52,24 +70,32 @@ class _mua(sqldb.Model):
     # ma_mua = relationship("Mon_an", backref="ma_mua")
     def __repr__(self):
         return '<_mua %r>' % self.name
-    def __init__(self, excelValue):
-        # self.id = excelId
+
+# constructor _mua
+    # def __init__(self, excelValue):
+    #     self.name = excelValue
+
+# func add data to table _mua
+    def addMua(self, excelValue):
         self.name = excelValue
+        sqldb.session.add(self)
+        sqldb.session.commit()
 
 class Cach_cb(sqldb.Model):
     __tablename__ = 'cach_cb'
     id = sqldb.Column(sqldb.Integer, primary_key = True)
     name = sqldb.Column(sqldb.String(255), unique = True, nullable = False)
-    # ma_cach_cb = relationship("Mon_an", backref="ma_cach_cb")
+
     def __repr__(self):
         return '<Cach_cb %r>' % self.name
 
+# func add data to table Cach_cb
+    def addCachchebien(self, excelValue):
+        self.name = excelValue
+        sqldb.session.add(self)
+        sqldb.session.commit()
 
 if __name__ == '__main__':
-    # xuan = Mua(name = "Mùa xuân")
-    # sqldb.session.add(xuan)
-    # sqldb.session.commit()
-    # results = _mua.
-    # print(results[1])
-    sqldb.create_all()
+    results = Mon_an.query.all()
+    print(results)
 
