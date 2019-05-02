@@ -33,14 +33,18 @@ class Mon_an(sqldb.Model):
         self.video = video
         sqldb.session.add(self)
         sqldb.session.commit()
+    
+    def __repr__(self):
+        return '%r' % self.ten_mon
+
 
 class Thanh_phan(sqldb.Model):
     __tablename__ = 'thanh_phan'
     id = sqldb.Column(sqldb.Integer, primary_key = True)
     name = sqldb.Column(sqldb.String(255), unique = True, nullable = False)
 
-    def __repr__(self):
-        return '<Thanh_phan %r>' % self.name
+    # def __repr__(self):
+    #     return self.name
 
 # func add data to table thanh_phan
     def addThanhphan(self, excelValue):
