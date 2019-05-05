@@ -12,7 +12,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://{}:{}@localhost:3306/{}
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 sqldb = SQLAlchemy(app)
 
-from models import Mon_an, Thanh_phan, Van_hoa, Cach_cb, _mua
+from models import Mon_an, Thanh_phan, Van_hoa, Cach_cb, _mua, Meovaobep, Meovat
 
 def getlinkstatic():
 
@@ -28,11 +28,6 @@ def getlinkstatic():
     return getLink
 
 def getListDishes(results):
-    # cursor = connection().cursor()
-    
-    # cursor.execute(sql)
-    # results = cursor.fetchall()
-    
     listData = []
     for result in results:
         jsonData = {
@@ -61,6 +56,19 @@ def model(donviCT):
         "van_hoa": Van_hoa,
     }
     return switcher.get(donviCT)
+
+def query(donviCT):
+    switcher = {
+        "_mua": Mon_an.query.with_entities(Mon_an.ten_mon, Mon_an.image).\
+        join(_mua).filter(Mon_an.ma_mua == _mua.id).all(),
+        "cach_cb": Mon_an.query.with_entities(Mon_an.ten_mon, Mon_an.image).\
+        join(Cach_cb).filter(Mon_an.ma_cach_cb == Cach_cb.id).all(),
+        "thanh_phan": Mon_an.query.with_entities(Mon_an.ten_mon, Mon_an.image).\
+        join(Thanh_phan).filter(Mon_an.ma_nl == Thanh_phan.id).all(),
+        "van_hoa": Mon_an.query.with_entities(Mon_an.ten_mon, Mon_an.image).\
+        join(Van_hoa).filter(Mon_an.ma_vh == Van_hoa.id).all(),
+    }
+    return switcher.get(donviCT)
 # Trang chủ
 @app.route('/home')
 def my_home():
@@ -74,31 +82,53 @@ def my_home():
 @app.route('/home/<donviCT>')
 def itemCT(donviCT):
     name_cls = model(donviCT)
-    results = name_cls.query.with_entities(name_cls.name).order_by(name_cls.id.desc()).all()
-    menu = []
+    results = name_cls.query.with_entities(name_cls.name).all()
+    menu = [{
+        "linkTrangchu": url_for('my_home'),
+        "linkMeovaobep": url_for('meovat')
+    }]
+    congthucnauan =[
+        {
+            "theloai": "Món ăn theo mùa".decode('utf-8')
+        },
+        {
+            "theloai": "Món ăn theo cách chế biến".decode('utf-8')
+        },
+        {
+            "theloai": "Món ăn theo thành phần".decode('utf-8')
+        },
+        {
+            "theloai": "Món ăn theo văn hóa".decode('utf-8')
+        }]
+    
+    theloai = []
     for result in results:
         jsonData = {
-            "linkdonvi": url_for('itemCT', donviCT = donviCT),
-            "name": result[0]
+            "link": url_for('itemCT', donviCT = donviCT),
+            "donvi": result[0]
         }
-        # print(result[0])
-        menu.append(jsonData)
+        theloai.append(jsonData)
 
-    query = Mon_an
-    return render_template('itemcongthuc.html', title = getTitle(donviCT), menu = menu, donvicongthuc = donviCT)
+    query = query(donviCT)
+    listmonan = []
+    for qe in query:
+        jsonData = {
+            "linkMon": url_for('monan', tenmon = qe[0]),
+            "linkImg": qe[1],
+            "tenmon": qe[0]
+        }
+        listmonan.append(jsonData)
+    return render_template('itemcongthuc.html', title = getTitle(donviCT), menu = menu,congthucnauan = congthucnauan, theloai = theloai, listmonan=listmonan)
 
 # giao diện mẹo vào bếp
 @app.route('/home/meovaobep')
 def meovat():
-    cursor = connection().cursor()
-    query = "SELECT Ten, mota FROM meovat order by ID limit 10"
-    cursor.execute(query)
-    results = cursor.fetchall()
+    results = Meovat.query.with_entities(Meovat.name, Meovat.mo_ta).order_by(Meovat.id.desc()).limit(10).all()
     listData = []
     for result in results:
         jsonData = {
-            "Ten": result[0].decode('utf-8'),
-            "mota": result[1].decode('utf-8'), 
+            "Ten": result[0],
+            "mota": result[1], 
             "linkMeovat": url_for('meovaobep', tenmeovat= result[0])
         }
         listData.append(jsonData)
@@ -108,11 +138,6 @@ def meovat():
 # giao diện công thức món ăn cụ thể
 @app.route('/home/congthucnauan/<tenmon>')
 def monan(tenmon):
-    # cursor = connection().cursor()
-    # # lay thong tin mon an
-    # sql2 = "SELECT ten_mon, cong_thuc, nguyen_lieu, image, video FROM mon_an where ten_mon like %s"
-    # cursor.execute(sql2,(tenmon,))
-    # results = cursor.fetchall()
     results = Mon_an.query.\
         with_entities(Mon_an.ten_mon, Mon_an.cong_thuc, Mon_an.nguyen_lieu, Mon_an.image, Mon_an.video).\
         filter(Mon_an.ten_mon == tenmon).order_by(Mon_an.ma_mon.desc()).all()
@@ -133,15 +158,19 @@ def monan(tenmon):
 # giao diện mẹo vặt cụ thể
 @app.route('/home/meo_vao_bep/<tenmeovat>')
 def meovaobep(tenmeovat):
-    cursor = connection().cursor()
-    query = "SELECT meobep.mota, meobep.img from meobep inner join meovat on meobep.ID=meovat.ID where meovat.Ten like %s"
-    cursor.execute(query, (tenmeovat,))
-    results = cursor.fetchall()
+    # cursor = connection().cursor()
+    # query = "SELECT meobep.mota, meobep.img from meobep inner join meovat on meobep.ID=meovat.ID where meovat.Ten like %s"
+    # cursor.execute(query, (tenmeovat,))
+    # results = cursor.fetchall()
+    results = Meovaobep.query.\
+        with_entities(Meovaobep.name, Meovaobep.mo_ta, Meovaobep.image).\
+            join(Meovat).filter(Meovaobep.id_meo == Meovat.id).filter(Meovat.name == tenmeovat).all()
     meo = []
     for result in results:
         jsonData = {
-            "image": result[1],
-            "mota": result[0].decode('utf-8')
+            "name": resullt[0],
+            "mota": result[1],
+            "image": result[2]
         }
         meo.append(jsonData)
     connection().close()

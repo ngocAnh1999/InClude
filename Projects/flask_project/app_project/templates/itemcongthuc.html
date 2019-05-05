@@ -7,22 +7,7 @@
 {% endblock %}
 
 {% block menu %}
-
-<div class="menu" style="font-size: 17px">
-
-    <ul>
-        <li>{{ donvicongthuc }}
-            <ul>
-                {% for item in menu %}
-                <li><a href="{{ item.linkdonvi }}">{{ item.name }}</a></li>
-                {% endfor %}
-            </ul>
-        </li>
-
-    </ul>
-
-</div>
-
+    {{ super() }}
 {% endblock %}
 
 {% block right%}

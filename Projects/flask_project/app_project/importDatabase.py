@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from flask_sqlalchemy import SQLAlchemy
-from models import Mon_an, Thanh_phan, Van_hoa, Cach_cb, _mua
+from models import Mon_an, Thanh_phan, Van_hoa, Cach_cb, _mua, Meovaobep, Meovat
 import openpyxl, requests, pymysql
 from api import sqldb
 
@@ -75,9 +75,33 @@ def importMon_an():
                         monan.addMonan(ten_mon, image, cong_thuc, nguyen_lieu, ma_nl, ma_vh, ma_cach_cb, ma_mua, video)
                 else :
                         print(ten_mon + " _________ duplicate")
-if __name__ == '__main__':
+
+def importMeovaobep():
+        sheet = wb.get_sheet_by_name("Bang_meo_vao_bep")
+        max_col = sheet.max_column
+        max_row = sheet.max_row
+        for i in range(0, max_row - 1):
+                name = sheet.cell(row = i+2, column = 3).value
+                mo_ta = sheet.cell(row = i+2, column = 4).value
+                image = sheet.cell(row = i+2, column = 5).value
+                id_meo = sheet.cell(row = i+2, column = 2).value
+                meovaobep = Meovaobep()
+                meovaobep.addMeovaobep(name, mo_ta, image, id_meo)
+def importMeovat():
+        sheet = wb.get_sheet_by_name("Bang_meo_vat")
+        max_col = sheet.max_column
+        max_row = sheet.max_row
+        for i in range(0, max_row - 1):
+                name = sheet.cell(row = i+2, column = 2).value
+                mo_ta = sheet.cell(row = i+2, column = 3).value
+                meovat = Meovat()
+                meovat.addMeovat(name, mo_ta)
+
+# if __name__ == '__main__':
         # importMua()
         # importThanh_phan()
         # importVan_hoa()
         # importCachchebien()
-        importMon_an()
+        # importMeovaobep()   #
+        # importMeovat()      #
+        # importMon_an()

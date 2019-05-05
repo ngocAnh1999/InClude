@@ -99,10 +99,37 @@ class Cach_cb(sqldb.Model):
 class Meovaobep(sqldb.Model):
     __tablename__ = 'meovaobep'
     id = sqldb.Column(sqldb.Integer, primary_key = True)
+    name = sqldb.Column(sqldb.String(255), unique = True, nullable = False)
+    mo_ta = sqldb.Column(sqldb.Text, nullable = False)
+    image = sqldb.Column(sqldb.String(255), nullable = False)
+    id_meo = sqldb.Column(sqldb.Integer, sqldb.ForeignKey('meovat.id'), nullable = True)
+
+    def addMeovaobep(self, name, mo_ta, image, id_meo):
+        self.name = name
+        self.mo_ta = mo_ta
+        self.image = image
+        self.id_meo = id_meo
+        sqldb.session.add(self)
+        sqldb.session.commit()
+
+class Meovat(sqldb.Model):
+    __tablename__ = 'meovat'
+    id = sqldb.Column(sqldb.Integer, primary_key = True)
+    name = sqldb.Column(sqldb.String(255), unique = True, nullable = False)
+    mo_ta = sqldb.Column(sqldb.Text, nullable = False)
+
+    def addMeovat(self, name, mo_ta):
+        self.name = name
+        self.mo_ta = mo_ta
+        sqldb.session.add(self)
+        sqldb.session.commit()
+
 
 if __name__ == '__main__':
-    results = Mon_an.query.with_entities(Mon_an.ten_mon, Mon_an.image).\
-        order_by(Mon_an.ma_mon.desc()).limit(10).all()
-    for result in results:
-        print(result[1])
+
+    sqldb.create_all()
+    # results = Mon_an.query.with_entities(Mon_an.ten_mon, Mon_an.image).\
+    #     order_by(Mon_an.ma_mon.desc()).limit(10).all()
+    # for result in results:
+    #     print(result[1])
 
