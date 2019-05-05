@@ -12,7 +12,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://{}:{}@localhost:3306/{}
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 sqldb = SQLAlchemy(app)
 
-# from models import Mon_an, Thanh_phan, Van_hoa, Cach_cb, _mua
+from models import Mon_an, Thanh_phan, Van_hoa, Cach_cb, _mua
 
 def getlinkstatic():
 
@@ -27,15 +27,16 @@ def getlinkstatic():
     
     return getLink
 
-def getListDishes(sql):
-    cursor = connection().cursor()
+def getListDishes(results):
+    # cursor = connection().cursor()
     
-    cursor.execute(sql)
-    results = cursor.fetchall()
+    # cursor.execute(sql)
+    # results = cursor.fetchall()
+    
     listData = []
     for result in results:
         jsonData = {
-            "tenmon": result[0].decode('utf-8'),
+            "tenmon": result[0],
             "linkImg": result[1], 
             "linkMon": url_for('monan', tenmon=result[0])
         }
@@ -52,18 +53,39 @@ def getTitle(donviCT):
     }
     return switcher.get(donviCT, "Trang chủ".decode('utf-8'))
 
+def model(donviCT):
+    switcher = {
+        "_mua": _mua,
+        "cach_cb": Cach_cb,
+        "thanh_phan": Thanh_phan,
+        "van_hoa": Van_hoa,
+    }
+    return switcher.get(donviCT)
 # Trang chủ
 @app.route('/home')
 def my_home():
-    query = "SELECT ten_mon, image from mon_an order by ma_mon limit 10"
-    listData = getListDishes(query)
+    results = Mon_an.query.with_entities(Mon_an.ten_mon, Mon_an.image).\
+        order_by(Mon_an.ma_mon.desc()).limit(10).all()
+    # query = "SELECT ten_mon, image from mon_an order by ma_mon limit 10"
+    listData = getListDishes(results)
     return render_template('trangchu.html', getLink=getlinkstatic(), listmonan=listData, menu=getlinkstatic())
 
 # giao diện các công thức đơn vị
 @app.route('/home/<donviCT>')
 def itemCT(donviCT):
-    
-    return render_template('itemcongthuc.html', getLink=getlinkstatic(), title=getTitle(donviCT), menu=getlinkstatic())
+    name_cls = model(donviCT)
+    results = name_cls.query.with_entities(name_cls.name).order_by(name_cls.id.desc()).all()
+    menu = []
+    for result in results:
+        jsonData = {
+            "linkdonvi": url_for('itemCT', donviCT = donviCT),
+            "name": result[0]
+        }
+        # print(result[0])
+        menu.append(jsonData)
+
+    query = Mon_an
+    return render_template('itemcongthuc.html', title = getTitle(donviCT), menu = menu, donvicongthuc = donviCT)
 
 # giao diện mẹo vào bếp
 @app.route('/home/meovaobep')
@@ -86,16 +108,19 @@ def meovat():
 # giao diện công thức món ăn cụ thể
 @app.route('/home/congthucnauan/<tenmon>')
 def monan(tenmon):
-    cursor = connection().cursor()
-    # lay thong tin mon an
-    sql2 = "SELECT ten_mon, cong_thuc, nguyen_lieu, image, video FROM mon_an where ten_mon like %s"
-    cursor.execute(sql2,(tenmon,))
-    results = cursor.fetchall()
+    # cursor = connection().cursor()
+    # # lay thong tin mon an
+    # sql2 = "SELECT ten_mon, cong_thuc, nguyen_lieu, image, video FROM mon_an where ten_mon like %s"
+    # cursor.execute(sql2,(tenmon,))
+    # results = cursor.fetchall()
+    results = Mon_an.query.\
+        with_entities(Mon_an.ten_mon, Mon_an.cong_thuc, Mon_an.nguyen_lieu, Mon_an.image, Mon_an.video).\
+        filter(Mon_an.ten_mon == tenmon).order_by(Mon_an.ma_mon.desc()).all()
     mon = []
     for result in results:
-        jsonData = {"ten_mon": result[0].decode('utf-8'), 
-                    "cong_thuc": result[1].decode('utf-8'), 
-                    "nguyen_lieu": result[2].decode('utf-8'), 
+        jsonData = {"ten_mon": result[0], 
+                    "cong_thuc": result[1], 
+                    "nguyen_lieu": result[2], 
                     "image": result[3],
                     "linkVideo": result[4]
                     }

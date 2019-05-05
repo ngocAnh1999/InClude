@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 
 from flask_sqlalchemy import SQLAlchemy
-# from __main__ import sqldb
-from api import sqldb
+from __main__ import sqldb
+# from api import sqldb
 from sqlalchemy.orm import relationship
 from sqlalchemy import ForeignKey
 
@@ -34,8 +34,8 @@ class Mon_an(sqldb.Model):
         sqldb.session.add(self)
         sqldb.session.commit()
     
-    def __repr__(self):
-        return '%r' % self.ten_mon
+    # def __repr__(self):
+    #     return '%r' % self.ten_mon
 
 
 class Thanh_phan(sqldb.Model):
@@ -58,8 +58,8 @@ class Van_hoa(sqldb.Model):
     id = sqldb.Column(sqldb.Integer, primary_key = True)
     name = sqldb.Column(sqldb.String(255), unique = True, nullable = False)
     
-    def __repr__(self):
-        return '<Van_hoa %r>' % self.name
+    # def __repr__(self):
+    #     return '<Van_hoa %r>' % self.name
 
 # func add data to table Van_hoa
     def addVanhoa(self, excelValue):
@@ -72,12 +72,9 @@ class _mua(sqldb.Model):
     id = sqldb.Column(sqldb.Integer, primary_key = True)
     name = sqldb.Column(sqldb.String(255), unique = True, nullable = False)
     # ma_mua = relationship("Mon_an", backref="ma_mua")
-    def __repr__(self):
-        return '<_mua %r>' % self.name
+    # def __repr__(self):
+    #     return '<_mua %r>' % self.name
 
-# constructor _mua
-    # def __init__(self, excelValue):
-    #     self.name = excelValue
 
 # func add data to table _mua
     def addMua(self, excelValue):
@@ -90,8 +87,8 @@ class Cach_cb(sqldb.Model):
     id = sqldb.Column(sqldb.Integer, primary_key = True)
     name = sqldb.Column(sqldb.String(255), unique = True, nullable = False)
 
-    def __repr__(self):
-        return '<Cach_cb %r>' % self.name
+    # def __repr__(self):
+    #     return '<Cach_cb %r>' % self.name
 
 # func add data to table Cach_cb
     def addCachchebien(self, excelValue):
@@ -99,7 +96,13 @@ class Cach_cb(sqldb.Model):
         sqldb.session.add(self)
         sqldb.session.commit()
 
+class Meovaobep(sqldb.Model):
+    __tablename__ = 'meovaobep'
+    id = sqldb.Column(sqldb.Integer, primary_key = True)
+
 if __name__ == '__main__':
-    results = Mon_an.query.all()
-    print(results)
+    results = Mon_an.query.with_entities(Mon_an.ten_mon, Mon_an.image).\
+        order_by(Mon_an.ma_mon.desc()).limit(10).all()
+    for result in results:
+        print(result[1])
 
