@@ -110,19 +110,10 @@
                     <h3><a href="{{ item.linkTrangchu }}">Trang chủ</a></h3>
                     <li>Công thức nấu ăn
                         <ul>
-                            {% for it in congthucnauan %}
-                            <li>{{ it.theloai }}
-                                <ul>
-                                    {% for i in theloai %}
-                                    <li><a href="{{ i.link }}">
-                                            {{ i.donvi }}
-                                    </a>
-                                        
-                                    </li>
-                                    {% endfor %}
-                                </ul>
-                            </li>
-                            {% endfor %}
+                            <li><a href = "{{ item.linkMua }}">Món ăn theo mùa</a></li>
+                            <li><a href = "{{ item.linkCachchebien}}">Món ăn theo cách chế biến</a></li>
+                            <li><a href = "{{ item.linkThanhphan }}">Món ăn theo thành phần</a></li>
+                            <li><a href = "{{ item.linkVanhoa}}">Món ăn theo văn hóa</a></li>
                         </ul>
                     </li>
                     <li>Thực đơn dinh dưỡng

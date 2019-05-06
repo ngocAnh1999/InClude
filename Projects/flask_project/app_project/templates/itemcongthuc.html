@@ -3,28 +3,41 @@
 {% block title %}{{ title }}{% endblock %}
 
 {% block head %}
-    {{ super() }}
+{{ super() }}
 {% endblock %}
 
 {% block menu %}
-    {{ super() }}
+<div class="menu" style="font-size: 17px">
+
+    <ul>
+        <li>Công thức nấu ăn
+            <ul>
+                <li>{{ title }} 
+                    <ul>
+                        {% for item in congthucnauan%}
+                        <li><a href="{{ item.link }}">{{ item.name }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </li>
+            </ul>
+        </li>
+</div>
 {% endblock %}
 
 {% block right%}
-    <ul>
-        {% for it in listmonan %}
-        <li>
-            <a href = "{{ it.linkMon }}">
-                <img src="{{ it.linkImg }}"
-                style="width: 100px">
+<ul>
+    {% for it in listmonan %}
+    <li>
+        <a href="{{ it.linkMon }}">
+            <img src="{{ it.linkImg }}" style="width: 100px">
             <h2>{{ it.tenmon }}</h2>
-            </a>
-            
-        </li>
-        {% endfor %}
-    </ul>
+        </a>
+
+    </li>
+    {% endfor %}
+</ul>
 {% endblock %}
 
 {% block body %}
-    {{ super() }}
+{{ super() }}
 {% endblock %}

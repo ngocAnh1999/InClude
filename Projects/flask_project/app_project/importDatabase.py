@@ -91,17 +91,19 @@ def importMeovat():
         sheet = wb.get_sheet_by_name("Bang_meo_vat")
         max_col = sheet.max_column
         max_row = sheet.max_row
+        print(max_col)
         for i in range(0, max_row - 1):
                 name = sheet.cell(row = i+2, column = 2).value
                 mo_ta = sheet.cell(row = i+2, column = 3).value
+                print(name)
                 meovat = Meovat()
                 meovat.addMeovat(name, mo_ta)
 
-# if __name__ == '__main__':
+if __name__ == '__main__':
         # importMua()
         # importThanh_phan()
         # importVan_hoa()
         # importCachchebien()
         # importMeovaobep()   #
-        # importMeovat()      #
+        importMeovat()
         # importMon_an()

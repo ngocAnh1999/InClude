@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 
 from flask_sqlalchemy import SQLAlchemy
-from __main__ import sqldb
-# from api import sqldb
+# from __main__ import sqldb
+from api import sqldb
 from sqlalchemy.orm import relationship
 from sqlalchemy import ForeignKey
 
@@ -101,7 +101,7 @@ class Meovaobep(sqldb.Model):
     id = sqldb.Column(sqldb.Integer, primary_key = True)
     name = sqldb.Column(sqldb.String(255), unique = True, nullable = False)
     mo_ta = sqldb.Column(sqldb.Text, nullable = False)
-    image = sqldb.Column(sqldb.String(255), nullable = False)
+    image = sqldb.Column(sqldb.String(255))
     id_meo = sqldb.Column(sqldb.Integer, sqldb.ForeignKey('meovat.id'), nullable = True)
 
     def addMeovaobep(self, name, mo_ta, image, id_meo):
