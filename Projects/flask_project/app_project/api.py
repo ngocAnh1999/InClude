@@ -18,10 +18,10 @@ def getlinkstatic():
 
     getLink=[{
         "linkTrangchu": url_for('my_home'),
-        "linkMua": url_for('itemCT', donviCT="_mua"),
-        "linkCachchebien": url_for('itemCT', donviCT="cach_cb"),
-        "linkThanhphan": url_for('itemCT', donviCT="thanh_phan"),
-        "linkVanhoa": url_for('itemCT', donviCT="van_hoa"),
+        "linkMua": url_for('itemCT', donviCT="_mua", category = 'all'),
+        "linkCachchebien": url_for('itemCT', donviCT="cach_cb", category = 'all'),
+        "linkThanhphan": url_for('itemCT', donviCT="thanh_phan", category = 'all'),
+        "linkVanhoa": url_for('itemCT', donviCT="van_hoa", category = 'all'),
         "linkMeovaobep": url_for('meovat')
     }]
     
@@ -57,70 +57,66 @@ def model(donviCT):
     }
     return switcher.get(donviCT)
 
-def query(donviCT):
-    switcher = {
-        "_mua": Mon_an.query.with_entities(Mon_an.ten_mon, Mon_an.image).\
-        join(_mua).filter(Mon_an.ma_mua == _mua.id).all(),
-        "cach_cb": Mon_an.query.with_entities(Mon_an.ten_mon, Mon_an.image).\
-        join(Cach_cb).filter(Mon_an.ma_cach_cb == Cach_cb.id).all(),
-        "thanh_phan": Mon_an.query.with_entities(Mon_an.ten_mon, Mon_an.image).\
-        join(Thanh_phan).filter(Mon_an.ma_nl == Thanh_phan.id).all(),
-        "van_hoa": Mon_an.query.with_entities(Mon_an.ten_mon, Mon_an.image).\
-        join(Van_hoa).filter(Mon_an.ma_vh == Van_hoa.id).all(),
-    }
-    return switcher.get(donviCT)
+def query(donviCT, category):
+    if category == 'all':
+
+        switcher = {
+            "_mua": Mon_an.query.with_entities(Mon_an.ten_mon, Mon_an.image).\
+            join(_mua).filter(Mon_an.ma_mua == _mua.id).all(),
+            "cach_cb": Mon_an.query.with_entities(Mon_an.ten_mon, Mon_an.image).\
+            join(Cach_cb).filter(Mon_an.ma_cach_cb == Cach_cb.id).all(),
+            "thanh_phan": Mon_an.query.with_entities(Mon_an.ten_mon, Mon_an.image).\
+            join(Thanh_phan).filter(Mon_an.ma_nl == Thanh_phan.id).all(),
+            "van_hoa": Mon_an.query.with_entities(Mon_an.ten_mon, Mon_an.image).\
+            join(Van_hoa).filter(Mon_an.ma_vh == Van_hoa.id).all(),
+        }
+        return switcher.get(donviCT)
+    else:
+        switcher = {
+            "_mua": Mon_an.query.with_entities(Mon_an.ten_mon, Mon_an.image).\
+            join(_mua).filter(Mon_an.ma_mua == _mua.id).filter(_mua.name == category).all(),
+            "cach_cb": Mon_an.query.with_entities(Mon_an.ten_mon, Mon_an.image).\
+            join(Cach_cb).filter(Mon_an.ma_cach_cb == Cach_cb.id).filter(Cach_cb.name == category).all(),
+            "thanh_phan": Mon_an.query.with_entities(Mon_an.ten_mon, Mon_an.image).\
+            join(Thanh_phan).filter(Mon_an.ma_nl == Thanh_phan.id).filter(Thanh_phan.name == category).all(),
+            "van_hoa": Mon_an.query.with_entities(Mon_an.ten_mon, Mon_an.image).\
+            join(Van_hoa).filter(Mon_an.ma_vh == Van_hoa.id).filter(Van_hoa.name == category).all(),
+        }
+        return switcher.get(donviCT)
 # Trang chủ
 @app.route('/home')
 def my_home():
     results = Mon_an.query.with_entities(Mon_an.ten_mon, Mon_an.image).\
         order_by(Mon_an.ma_mon.desc()).limit(10).all()
-    # query = "SELECT ten_mon, image from mon_an order by ma_mon limit 10"
     listData = getListDishes(results)
     return render_template('trangchu.html', getLink=getlinkstatic(), listmonan=listData, menu=getlinkstatic())
 
 # giao diện các công thức đơn vị
 @app.route('/home/<donviCT>')
 def itemCT(donviCT):
-    name_cls = model(donviCT)
-    results = name_cls.query.with_entities(name_cls.name).all()
-    menu = [{
-        "linkTrangchu": url_for('my_home'),
-        "linkMeovaobep": url_for('meovat')
-    }]
-    congthucnauan =[
-        {
-            "theloai": "Món ăn theo mùa".decode('utf-8')
-        },
-        {
-            "theloai": "Món ăn theo cách chế biến".decode('utf-8')
-        },
-        {
-            "theloai": "Món ăn theo thành phần".decode('utf-8')
-        },
-        {
-            "theloai": "Món ăn theo văn hóa".decode('utf-8')
-        }]
-    
-    theloai = []
+    category = request.args.get('category')
+    class_name = model(donviCT)
+    results = class_name.query.with_entities(class_name.name).all()
+    congthucnauan = []
     for result in results:
         jsonData = {
-            "link": url_for('itemCT', donviCT = donviCT),
-            "donvi": result[0]
+            "link": url_for('itemCT', donviCT = donviCT, category = result[0]),
+            "name": result[0]
         }
-        theloai.append(jsonData)
+        congthucnauan.append(jsonData)
 
-    query = query(donviCT)
+    res = query(donviCT, category)
     listmonan = []
-    for qe in query:
+    for re in res:
         jsonData = {
-            "linkMon": url_for('monan', tenmon = qe[0]),
-            "linkImg": qe[1],
-            "tenmon": qe[0]
+            "linkMon": url_for('monan', tenmon = re[0]),
+            "linkImg": re[1],
+            "tenmon": re[0]
         }
         listmonan.append(jsonData)
-    return render_template('itemcongthuc.html', title = getTitle(donviCT), menu = menu,congthucnauan = congthucnauan, theloai = theloai, listmonan=listmonan)
 
-# giao diện mẹo vào bếp
+    return render_template('itemcongthuc.html', getLink=getlinkstatic(), title = getTitle(donviCT), congthucnauan = congthucnauan, listmonan = listmonan)
+
 @app.route('/home/meovaobep')
 def meovat():
     results = Meovat.query.with_entities(Meovat.name, Meovat.mo_ta).order_by(Meovat.id.desc()).limit(10).all()
@@ -158,10 +154,6 @@ def monan(tenmon):
 # giao diện mẹo vặt cụ thể
 @app.route('/home/meo_vao_bep/<tenmeovat>')
 def meovaobep(tenmeovat):
-    # cursor = connection().cursor()
-    # query = "SELECT meobep.mota, meobep.img from meobep inner join meovat on meobep.ID=meovat.ID where meovat.Ten like %s"
-    # cursor.execute(query, (tenmeovat,))
-    # results = cursor.fetchall()
     results = Meovaobep.query.\
         with_entities(Meovaobep.name, Meovaobep.mo_ta, Meovaobep.image).\
             join(Meovat).filter(Meovaobep.id_meo == Meovat.id).filter(Meovat.name == tenmeovat).all()
