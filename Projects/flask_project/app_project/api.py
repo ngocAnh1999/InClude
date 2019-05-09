@@ -4,7 +4,9 @@ from flask import Flask, render_template, redirect, request, url_for
 import pymysql
 from flask_sqlalchemy import SQLAlchemy
 from db import connection, host, user, password, dbname
+from elasticsearch import Elasticsearch
 
+from search import add_to_index, remove_from_index, query_index
 
 app = Flask(__name__)
 
@@ -12,7 +14,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://{}:{}@localhost:3306/{}
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 sqldb = SQLAlchemy(app)
 
-# from models import Mon_an, Thanh_phan, Van_hoa, Cach_cb, _mua, Meovaobep, Meovat
+from models import Mon_an, Thanh_phan, Van_hoa, Cach_cb, _mua, Meovaobep, Meovat
 
 def getlinkstatic():
 
@@ -41,12 +43,12 @@ def getListDishes(results):
 
 def getTitle(donviCT):
     switcher = {
-        "_mua": "Món ăn theo mùa".decode('utf-8'),
-        "cach_cb": "Món ăn theo cách chế biến".decode('utf-8'),
-        "thanh_phan": "Món ăn theo thành phần".decode('utf-8'),
-        "van_hoa": "Món ăn theo văn hóa".decode('utf-8'),
+        "_mua": "Món ăn theo mùa",
+        "cach_cb": "Món ăn theo cách chế biến",
+        "thanh_phan": "Món ăn theo thành phần",
+        "van_hoa": "Món ăn theo văn hóa",
     }
-    return switcher.get(donviCT, "Trang chủ".decode('utf-8'))
+    return switcher.get(donviCT, "Trang chủ")
 
 def model(donviCT):
     switcher = {
@@ -84,15 +86,19 @@ def query(donviCT, category):
         }
         return switcher.get(donviCT)
 # Trang chủ
-@app.route('/home')
+@app.route('/home', methods =["GET","POST"])
 def my_home():
-    results = Mon_an.query.with_entities(Mon_an.ten_mon, Mon_an.image).\
-        order_by(Mon_an.ma_mon.desc()).limit(10).all()
+    if request.method == 'POST':
+        search = request.form.get("search")
+        results = Mon_an.query.with_entities(Mon_an.ten_mon, Mon_an.image).filter(Mon_an.ten_mon==search).limit(10).all()
+    else:
+        results = Mon_an.query.with_entities(Mon_an.ten_mon, Mon_an.image).\
+            order_by(Mon_an.ma_mon.asc()).all()
     listData = getListDishes(results)
     return render_template('trangchu.html', getLink=getlinkstatic(), listmonan=listData, menu=getlinkstatic())
 
 # giao diện các công thức đơn vị
-@app.route('/home/<donviCT>')
+@app.route('/home/<donviCT>', methods =["GET","POST"])
 def itemCT(donviCT):
     category = request.args.get('category')
     class_name = model(donviCT)
@@ -104,8 +110,11 @@ def itemCT(donviCT):
             "name": result[0]
         }
         congthucnauan.append(jsonData)
-
-    res = query(donviCT, category)
+    if request.method == 'POST':
+        search = request.form.get("search")
+        res = Mon_an.query.with_entities(Mon_an.ten_mon, Mon_an.image).filter(Mon_an.ten_mon==search).limit(10).all()
+    else:
+        res = query(donviCT, category)
     listmonan = []
     for re in res:
         jsonData = {
@@ -117,9 +126,14 @@ def itemCT(donviCT):
 
     return render_template('itemcongthuc.html', getLink=getlinkstatic(), title = getTitle(donviCT), congthucnauan = congthucnauan, listmonan = listmonan)
 
-@app.route('/home/meovaobep')
+@app.route('/home/meovaobep', methods = ["GET", "POST"])
 def meovat():
-    results = Meovat.query.with_entities(Meovat.name, Meovat.mo_ta).order_by(Meovat.id.desc()).limit(10).all()
+    if request.method == 'POST':
+        search = request.form.get("search")
+        results = Meovat.query.with_entities(Meovat.name, Meovat.mo_ta).\
+            join(Meovaobep).filter(Meovat.id == Meovaobep.id_meo).filter(Meovaobep.name==search).all()
+    else :
+        results = Meovat.query.with_entities(Meovat.name, Meovat.mo_ta).order_by(Meovat.id.desc()).limit(10).all()
     listData = []
     for result in results:
         jsonData = {
@@ -160,7 +174,7 @@ def meovaobep(tenmeovat):
     meo = []
     for result in results:
         jsonData = {
-            "name": resullt[0],
+            "name": result[0],
             "mota": result[1],
             "image": result[2]
         }

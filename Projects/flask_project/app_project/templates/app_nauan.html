@@ -11,7 +11,8 @@
 {% endblock %}
 
 {% block right %}
-    {% for item in mon %}
+<div id = "right">
+        {% for item in mon %}
         <div>
             
             <img src="{{ item.image }}" style="width: 600px; display: block;margin-left: auto;margin-right: auto">
@@ -29,6 +30,8 @@
         </div>
 
     {% endfor %}
+</div>
+    
 {% endblock %}
 {% block body %}
     {{ super() }}

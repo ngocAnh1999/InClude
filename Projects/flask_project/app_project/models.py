@@ -2,14 +2,14 @@
 # -*- coding: utf-8 -*-
 
 from flask_sqlalchemy import SQLAlchemy
-# from __main__ import sqldb
-from api import sqldb
+from __main__ import sqldb
+# from api import sqldb
 from sqlalchemy.orm import relationship
 from sqlalchemy import ForeignKey
 
 class Mon_an(sqldb.Model):
     __tablename__ = 'mon_an'
-
+    __searchable__ = ['body']
     ma_mon = sqldb.Column(sqldb.Integer, primary_key = True)
     ten_mon = sqldb.Column(sqldb.String(255), unique = True, nullable = False)
     image = sqldb.Column(sqldb.String(255), nullable = False)
@@ -40,11 +40,9 @@ class Mon_an(sqldb.Model):
 
 class Thanh_phan(sqldb.Model):
     __tablename__ = 'thanh_phan'
+    __searchable__ = ['body']
     id = sqldb.Column(sqldb.Integer, primary_key = True)
     name = sqldb.Column(sqldb.String(255), unique = True, nullable = False)
-
-    # def __repr__(self):
-    #     return self.name
 
 # func add data to table thanh_phan
     def addThanhphan(self, excelValue):
@@ -55,11 +53,9 @@ class Thanh_phan(sqldb.Model):
 
 class Van_hoa(sqldb.Model):
     __tablename__ = 'van_hoa'
+    __searchable__ = ['body']
     id = sqldb.Column(sqldb.Integer, primary_key = True)
     name = sqldb.Column(sqldb.String(255), unique = True, nullable = False)
-    
-    # def __repr__(self):
-    #     return '<Van_hoa %r>' % self.name
 
 # func add data to table Van_hoa
     def addVanhoa(self, excelValue):
@@ -69,11 +65,9 @@ class Van_hoa(sqldb.Model):
 
 class _mua(sqldb.Model):
     __tablename__ = '_mua'
+    __searchable__ = ['body']
     id = sqldb.Column(sqldb.Integer, primary_key = True)
     name = sqldb.Column(sqldb.String(255), unique = True, nullable = False)
-    # ma_mua = relationship("Mon_an", backref="ma_mua")
-    # def __repr__(self):
-    #     return '<_mua %r>' % self.name
 
 
 # func add data to table _mua
@@ -84,11 +78,9 @@ class _mua(sqldb.Model):
 
 class Cach_cb(sqldb.Model):
     __tablename__ = 'cach_cb'
+    __searchable__ = ['body']
     id = sqldb.Column(sqldb.Integer, primary_key = True)
     name = sqldb.Column(sqldb.String(255), unique = True, nullable = False)
-
-    # def __repr__(self):
-    #     return '<Cach_cb %r>' % self.name
 
 # func add data to table Cach_cb
     def addCachchebien(self, excelValue):
@@ -98,6 +90,7 @@ class Cach_cb(sqldb.Model):
 
 class Meovaobep(sqldb.Model):
     __tablename__ = 'meovaobep'
+    __searchable__ = ['body']
     id = sqldb.Column(sqldb.Integer, primary_key = True)
     name = sqldb.Column(sqldb.String(255), unique = True, nullable = False)
     mo_ta = sqldb.Column(sqldb.Text, nullable = False)
@@ -114,6 +107,7 @@ class Meovaobep(sqldb.Model):
 
 class Meovat(sqldb.Model):
     __tablename__ = 'meovat'
+    __searchable__ = ['body']
     id = sqldb.Column(sqldb.Integer, primary_key = True)
     name = sqldb.Column(sqldb.String(255), unique = True, nullable = False)
     mo_ta = sqldb.Column(sqldb.Text, nullable = False)

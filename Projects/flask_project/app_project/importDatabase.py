@@ -23,7 +23,9 @@ def importMua():
         for i in range(0, max_row - 1):
                 cell = sheet.cell(row = i+2, column = 2)
                 mua = _mua()
-                mua.addMua(cell.value)
+                if(mua.query.filter(mua.name == cell.value).first() is None):
+                        mua.addMua(cell.value)
+                        print(cell.value + "++++++++++++successfully")
                 
 def importThanh_phan():
         sheet = wb.get_sheet_by_name("Bang_thanh_phan")
@@ -32,7 +34,9 @@ def importThanh_phan():
         for i in range(0, max_row - 1):
                 cell = sheet.cell(row = i+2, column = 2)
                 thanhphan = Thanh_phan()
-                thanhphan.addThanhphan(cell.value)
+                if(thanhphan.query.filter(thanhphan.name == cell.value).first() is None):
+                        thanhphan.addThanhphan(cell.value)
+                        print(cell.value + "++++++++++++successfully")
 
 def importVan_hoa():
         sheet = wb.get_sheet_by_name("Bang_van_hoa")
@@ -41,7 +45,10 @@ def importVan_hoa():
         for i in range(0, max_row - 1):
                 cell = sheet.cell(row = i+2, column = 2)
                 vanhoa = Van_hoa()
-                vanhoa.addVanhoa(cell.value)
+                if(vanhoa.query.filter(vanhoa.name == cell.value).first() is None):
+                        vanhoa.addVanhoa(cell.value)
+                        print(cell.value + "++++++++++++successfully")
+
 def importCachchebien():
         sheet = wb.get_sheet_by_name("Bang_cach_che_bien")
         max_col = sheet.max_column
@@ -49,7 +56,9 @@ def importCachchebien():
         for i in range(0, max_row - 1):
                 cell = sheet.cell(row = i+2, column = 2)
                 cachchebien = Cach_cb()
-                cachchebien.addCachchebien(cell.value)
+                if(cachchebien.query.filter(cachchebien.name == cell.value).first() is None):
+                        cachchebien.addCachchebien(cell.value)
+                        print(cell.value + "++++++++++++successfully")
 
 def importMon_an():
         sheet = wb.get_sheet_by_name("Bang_mon_an")
@@ -69,12 +78,11 @@ def importMon_an():
                 video = sheet.cell(row = i+2, column = 10).value
                 
                 monan = Mon_an()
-                # print(monan.query.filter_by(ten_mon=ten_mon).first())
-                if(monan.query.filter_by(ten_mon=ten_mon).first() is None and checkNull(ten_mon, image, cong_thuc, nguyen_lieu)):
-                        print(ten_mon)
-                        monan.addMonan(ten_mon, image, cong_thuc, nguyen_lieu, ma_nl, ma_vh, ma_cach_cb, ma_mua, video)
-                else :
-                        print(ten_mon + " _________ duplicate")
+                results = monan.query.with_entities(Mon_an.ten_mon).filter(monan.ten_mon==ten_mon).first()
+                print results
+                # if(len(results) == 0 and checkNull(ten_mon, image, cong_thuc, nguyen_lieu)):
+                #         print(ten_mon + "++++++++++++successfully")
+                #         monan.addMonan(ten_mon, image, cong_thuc, nguyen_lieu, ma_nl, ma_vh, ma_cach_cb, ma_mua, video)
 
 def importMeovaobep():
         sheet = wb.get_sheet_by_name("Bang_meo_vao_bep")
@@ -86,7 +94,10 @@ def importMeovaobep():
                 image = sheet.cell(row = i+2, column = 5).value
                 id_meo = sheet.cell(row = i+2, column = 2).value
                 meovaobep = Meovaobep()
-                meovaobep.addMeovaobep(name, mo_ta, image, id_meo)
+                if(meovaobep.query.filter(meovaobep.name == name).all() is None):
+                        print(name + "++++++++++ successfully")
+                        meovaobep.addMeovaobep(name, mo_ta, image, id_meo)
+                
 def importMeovat():
         sheet = wb.get_sheet_by_name("Bang_meo_vat")
         max_col = sheet.max_column
@@ -97,13 +108,23 @@ def importMeovat():
                 mo_ta = sheet.cell(row = i+2, column = 3).value
                 print(name)
                 meovat = Meovat()
-                meovat.addMeovat(name, mo_ta)
+                if(meovat.query.filter(meovat.name == name).all() is None):
+                        print(name + "++++++++++ successfully")
+                        meovat.addMeovat(name, mo_ta)
 
 if __name__ == '__main__':
+        # print("import data for table Mua:")
         # importMua()
+        # print("import data for table Thanh_phan:")
         # importThanh_phan()
+        # print("import data for table Van_hoa:")
         # importVan_hoa()
+        # print("import data for table Cach_che_bien:")
         # importCachchebien()
-        # importMeovaobep()   #
-        importMeovat()
-        # importMon_an()
+        print("import data for table Mon_an:")
+        importMon_an()
+        # print("import data for table Meo_vat:")
+        # importMeovat()
+        # print("import data for table Meo_vao_bep:")
+        # importMeovaobep() 
+        
