@@ -155,7 +155,3 @@ def search_meo(query, model):
     data = search['hits']['hits']
     return data
 
-
-# if __name__ == '__main__':
-
-    # sqldb.create_all()
