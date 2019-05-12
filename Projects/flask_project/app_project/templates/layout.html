@@ -88,11 +88,11 @@
             <form method="POST">
                 <input type="text" placeholder="Tìm kiếm..." name="search"
                     style="width: 250px;height: 40px;margin-top: 20px;border-radius: 5px">
-                <input type="submit" name="submit" value = "Search">
+                <input type="submit" name="submit" value="Search">
             </form>
             <!-- cột thành phần -->
             {% block menu %}
-            
+
             {% for item in menu %}
             <div class="menu" style="font-size: 17px;">
                 <ul>
@@ -182,12 +182,10 @@
             <!-- Danh sách các món ăn -->
 
             <div id="main">
-                <div id="right">
                     {% block right %}
-                    <h3>{{ timkiem }}</h3>
                     <div id="right"
                         style="display:grid;grid-template-columns: 410px 410px;grid-template-rows: auto auto auto auto;grid-column-gap: 10px;grid-row-gap: 10px;">
-
+                        <h3>{{ timkiem }}</h3>
                         {% for it in listmonan %}
                         <div>
                             <a href="{{ it.linkMon }}">
@@ -199,8 +197,6 @@
                             </a>
                         </div>
                         {% endfor %}
-
-                    </div>
                     {% endblock %}
                 </div>
 
