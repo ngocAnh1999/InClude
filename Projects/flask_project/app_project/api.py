@@ -133,7 +133,7 @@ def my_home():
             order_by(Mon_an.ma_mon.asc()).all()
         listData = getListDishes(results)
         timkiem =  ""
-    return render_template('trangchu.html', timkiem = timkiem, getLink=getlinkstatic(), listmonan=listData, menu=getlinkstatic())
+    return render_template('trangchu.html', getLink=getlinkstatic(), listmonan=listData, menu=getlinkstatic())
 
 # giao diện các công thức đơn vị
 @app.route('/home/<donviCT>', methods =["GET","POST"])
@@ -157,7 +157,7 @@ def itemCT(donviCT):
         res = query(donviCT, category)
         listmonan = getListDishes(res)
 
-    return render_template('itemcongthuc.html', timkiem = timkiem, getLink=getlinkstatic(), title = getTitle(donviCT), congthucnauan = congthucnauan, listmonan = listmonan)
+    return render_template('itemcongthuc.html', getLink=getlinkstatic(), title = getTitle(donviCT), congthucnauan = congthucnauan, listmonan = listmonan)
 
 @app.route('/home/meovaobep', methods = ["GET", "POST"])
 def meovat():
@@ -169,7 +169,7 @@ def meovat():
     else :
         results = Meovat.query.with_entities(Meovat.name, Meovat.mo_ta).order_by(Meovat.id.desc()).limit(10).all()
         listData = listmeo(results)
-    return render_template('meovaobep.html', timkiem = timkiem, getLink=getlinkstatic(), listmeovat = listData, menu=getlinkstatic())
+    return render_template('meovaobep.html', getLink=getlinkstatic(), listmeovat = listData, menu=getlinkstatic())
 
 # giao diện công thức món ăn cụ thể
 @app.route('/home/congthucnauan/<tenmon>', methods = ["GET", "POST"])
@@ -179,7 +179,7 @@ def monan(tenmon):
         timkiem = "Kết quả tìm kiếm: "
         search = request.form.get("search")
         listData = searching(search)
-        return render_template('trangchu.html', timkiem = timkiem, getLink=getlinkstatic(), listmonan=listData, menu=getlinkstatic())
+        return render_template('trangchu.html', getLink=getlinkstatic(), listmonan=listData, menu=getlinkstatic())
     else:
         results = Mon_an.query.\
             with_entities(Mon_an.ten_mon, Mon_an.cong_thuc, Mon_an.nguyen_lieu, Mon_an.image, Mon_an.video).\
@@ -198,7 +198,7 @@ def monan(tenmon):
                         }
             mon.append(jsonData)
         title= tenmon
-    return render_template('app_nauan.html', timkiem = timkiem, getLink=getlinkstatic(), title=title,mon=mon, menu=getlinkstatic())
+    return render_template('app_nauan.html', getLink=getlinkstatic(), title=title,mon=mon, menu=getlinkstatic())
 
 # giao diện mẹo vặt cụ thể
 @app.route('/home/meo_vao_bep/<tenmeovat>', methods = ["GET", "POST"])
@@ -208,7 +208,7 @@ def meovaobep(tenmeovat):
         timkiem = "Kết quả tìm kiếm: "
         search = request.form.get("search")
         listData = searching_meo(search)
-        return render_template('meovaobep.html', timkiem = timkiem, getLink=getlinkstatic(), listmeovat = listData, menu=getlinkstatic())
+        return render_template('meovaobep.html', getLink=getlinkstatic(), listmeovat = listData, menu=getlinkstatic())
     else :
         
         results = Meovaobep.query.\
@@ -223,7 +223,7 @@ def meovaobep(tenmeovat):
             }
             meo.append(jsonData)
         connection().close()
-    return render_template('app_meovat.html', timkiem = timkiem, getLink=getlinkstatic(), meo=meo, title = tenmeovat, menu=getlinkstatic())
+    return render_template('app_meovat.html', getLink=getlinkstatic(), meo=meo, title = tenmeovat, menu=getlinkstatic())
 
 
 if __name__ == '__main__':
