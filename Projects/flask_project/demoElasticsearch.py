@@ -3,12 +3,9 @@
 
 from flask_sqlalchemy import SQLAlchemy
 from elasticsearch import Elasticsearch
-from models import Mon_an, Meovaobep, Meovat
-es = Elasticsearch('http://localhost:9200')
+from app_project import mon_an, meovaobep, meovat
 
-mon_an = Mon_an
-meovaobep = Meovaobep
-meovat = Meovat
+es = Elasticsearch('http://localhost:9200')
 
 def create_mon():
     table_name = mon_an.__table__.name 
@@ -48,40 +45,17 @@ def create_all():
     create_meovat()
     create_meovaobep()
 
-def search_mon(query):
-    body = {
-        "_source": ["ten_mon", "image"],
-        "query": {
-            
-            "multi_match" : {
-            "query": query,
-            "fields": [ "ten_mon"]
-            }
-        }
-    }
-
-    search = es.search(index = "mon_an", doc_type="mon_an", body = body)
-    data = search['hits']['hits']
-    return data
-
-def search_meo(query, model):
-    body = {
-        "query": {
-            "multi_match" : {
-            "query": query,
-            "fields": [ "name", "mo_ta"]
-            }
-        }
-    }
-    table_name = model.__table__.name
-    search = es.search(index = table_name, doc_type=table_name, body = body)
-    data = search['hits']['hits']
-    return data
-
-
 if __name__ == "__main__":
     # create_all()
-    # data = search_meo("các mẹo nhà bếp với tỏi", meovaobep)
-    data = search_mon("công thức làm món thịt chiên xù")
-    for item in data:
-        print(item['_source'])
+    body = {
+        "_source": ["ten_mon"],
+        "query": {
+            "multi_match" : {
+            "query": "cách làm món cơm chiên",
+            "fields": [ "ten_mon", "cong_thuc" ]
+            }
+        }
+    }
+
+    search = es.search(index = "mon_an", doc_type = "mon_an", body = body)
+    print(search['hits'])

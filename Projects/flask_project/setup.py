@@ -45,3 +45,7 @@ if __name__ == "__main__":
         # nếu chưa cài các thư viện openpyxl, requests, pymysql thì dùng pip để cài:
         # pip install openpyxl (tương tự với các thư viện còn lại)
         # cuối cùng runfile: python setup.py
+
+        # sudo apt install python3-pip
+        # pip3 install --user pipenv
+        # pipenv --python 3.7

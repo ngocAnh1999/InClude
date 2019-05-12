@@ -6,6 +6,12 @@ from __main__ import sqldb
 # from api import sqldb
 from sqlalchemy.orm import relationship
 from sqlalchemy import ForeignKey
+from elasticsearch import Elasticsearch
+from flask_sqlalchemy import SQLAlchemy
+from elasticsearch import Elasticsearch
+
+es = Elasticsearch('http://localhost:9200')
+
 
 class Mon_an(sqldb.Model):
     __tablename__ = 'mon_an'
@@ -118,12 +124,38 @@ class Meovat(sqldb.Model):
         sqldb.session.add(self)
         sqldb.session.commit()
 
+def search_mon(query):
+    body = {
+        "_source": ["ten_mon", "image"],
+        "query": {
+            
+            "multi_match" : {
+            "query": query,
+            "fields": [ "ten_mon"]
+            }
+        }
+    }
 
-if __name__ == '__main__':
+    search = es.search(index = "mon_an", doc_type="mon_an", body = body)
+    data = search['hits']['hits']
+    return data
 
-    sqldb.create_all()
-    # results = Mon_an.query.with_entities(Mon_an.ten_mon, Mon_an.image).\
-    #     order_by(Mon_an.ma_mon.desc()).limit(10).all()
-    # for result in results:
-    #     print(result[1])
+def search_meo(query, model):
+    body = {
+        "_source": [ "name", "mo_ta"],
+        "query": {
+            "multi_match" : {
+            "query": query,
+            "fields": [ "name", "mo_ta"]
+            }
+        }
+    }
+    table_name = model.__table__.name
+    search = es.search(index = table_name, doc_type=table_name, body = body)
+    data = search['hits']['hits']
+    return data
 
+
+# if __name__ == '__main__':
+
+    # sqldb.create_all()

@@ -1,8 +1,7 @@
 from db import connection
 from api import sqldb
-# from elasticsearch import Elasticsearch
+from elasticsearch import Elasticsearch
 from models import Mon_an, Thanh_phan, Van_hoa, Cach_cb, _mua, Meovaobep, Meovat
-# from search import add_to_index, remove_from_index, query_index
 
 mon_an = Mon_an
 thanh_phan = Thanh_phan
