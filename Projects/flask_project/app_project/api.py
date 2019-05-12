@@ -122,7 +122,7 @@ def listmeo(results):
     return listData
 
 # Trang chủ
-@app.route('/home', methods =["GET","POST"])
+@app.route('/', methods =["GET","POST"])
 def my_home():
     if request.method == 'POST':
         search = request.form.get("search")
