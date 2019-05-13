@@ -10,7 +10,7 @@ from elasticsearch import Elasticsearch
 from flask_sqlalchemy import SQLAlchemy
 from elasticsearch import Elasticsearch
 
-es = Elasticsearch('http://localhost:9200')
+es = Elasticsearch('https://github.com/ngocAnh1999/InClude/tree/master/Projects/flask_project/app_project')
 
 
 class Mon_an(sqldb.Model):
