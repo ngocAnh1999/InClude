@@ -2,13 +2,13 @@
 # -*- coding: utf-8 -*-
 import pymysql
 
-host = "localhost"
-user = "ngocanh"
-password = "nao123456"
+host = "foodforfamilyf3.mysql.pythonanywhere-services.com"
+user = "foodforfamilyf3"
+password = "ngocanh2512"
 dbname = "fshare"
 
 def connection():
-    
+
     db = pymysql.connect(host, user, password, dbname)
     return db
 
