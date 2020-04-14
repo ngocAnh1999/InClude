@@ -79,10 +79,10 @@ def importMon_an():
                 
                 monan = Mon_an()
                 results = monan.query.with_entities(Mon_an.ten_mon).filter(monan.ten_mon==ten_mon).first()
-                print results
-                # if(len(results) == 0 and checkNull(ten_mon, image, cong_thuc, nguyen_lieu)):
-                #         print(ten_mon + "++++++++++++successfully")
-                #         monan.addMonan(ten_mon, image, cong_thuc, nguyen_lieu, ma_nl, ma_vh, ma_cach_cb, ma_mua, video)
+                # print results
+                if(results is None and checkNull(ten_mon, image, cong_thuc, nguyen_lieu)):
+                        print(ten_mon + "++++++++++++successfully")
+                        monan.addMonan(ten_mon, image, cong_thuc, nguyen_lieu, ma_nl, ma_vh, ma_cach_cb, ma_mua, video)
 
 def importMeovaobep():
         sheet = wb.get_sheet_by_name("Bang_meo_vao_bep")
@@ -94,9 +94,10 @@ def importMeovaobep():
                 image = sheet.cell(row = i+2, column = 5).value
                 id_meo = sheet.cell(row = i+2, column = 2).value
                 meovaobep = Meovaobep()
-                if(meovaobep.query.filter(meovaobep.name == name).all() is None):
-                        print(name + "++++++++++ successfully")
-                        meovaobep.addMeovaobep(name, mo_ta, image, id_meo)
+                # results = meovaobep.query.with_entities(meovaobep.name).filter(meovaobep.name == name).first()
+                # if(results is None):
+                #         print(name + "++++++++++ successfully")
+                meovaobep.addMeovaobep(name, mo_ta, image, id_meo)
                 
 def importMeovat():
         sheet = wb.get_sheet_by_name("Bang_meo_vat")
@@ -106,13 +107,16 @@ def importMeovat():
         for i in range(0, max_row - 1):
                 name = sheet.cell(row = i+2, column = 2).value
                 mo_ta = sheet.cell(row = i+2, column = 3).value
-                print(name)
+                # print(name)
                 meovat = Meovat()
-                if(meovat.query.filter(meovat.name == name).all() is None):
+                
+                results = meovat.query.with_entities(meovat.mo_ta).filter(meovat.name == name).first()
+                # print(results)
+                if(results is None):
                         print(name + "++++++++++ successfully")
                         meovat.addMeovat(name, mo_ta)
 
-if __name__ == '__main__':
+# if __name__ == '__main__':
         # print("import data for table Mua:")
         # importMua()
         # print("import data for table Thanh_phan:")
@@ -121,8 +125,8 @@ if __name__ == '__main__':
         # importVan_hoa()
         # print("import data for table Cach_che_bien:")
         # importCachchebien()
-        print("import data for table Mon_an:")
-        importMon_an()
+        # print("import data for table Mon_an:")
+        # importMon_an()
         # print("import data for table Meo_vat:")
         # importMeovat()
         # print("import data for table Meo_vao_bep:")

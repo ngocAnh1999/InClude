@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import pymysql
-
+import unicode
 host = "localhost"
 user = "ngocanh"
 password = "nao123456"
