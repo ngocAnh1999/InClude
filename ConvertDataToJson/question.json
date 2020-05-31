@@ -1,0 +1,771 @@
+[
+    {
+        "id": 1,
+        "type": "Toàn bộ câu hỏi trong bộ đề thi",
+        "description": "Toàn bộ 450 câu hỏi ôn thi, đề thi 30 câu hỏi, thi 20 phút, đúng 28/30 câu là đạt",
+        "question": []
+    },
+    {
+        "id": 2,
+        "type": "Khái niệm và quy tắc giao thông đường bộ",
+        "description": "Có 9/75 câu hỏi:\nKhái niệm: câu 1 đến câu 13;\nQuy tắc: câu 14 đến câu 72;\nTốc độ: câu 73 đến câu 75",
+        "question": [
+            {
+                "id": 1,
+                "content": "Khái niệm \"đường bộ\" được hiểu như thế nào là đúng ?",
+                "img": null,
+                "answers": [
+                    {
+                        "id": 1,
+                        "content": "1- Đường, cầu đường bộ",
+                        "check": 1
+                    },
+                    {
+                        "id": 2,
+                        "content": "2- Hầm đường bộ, bến phà đường bộ",
+                        "check": 1
+                    },
+                    {
+                        "id": 3,
+                        "content": "3- Đường, cầu đường bộ, hầm đường bộ, bến phà đường bộ và các công trình phụ trợ khác",
+                        "check": 0
+                    }
+                ],
+                "explain": "Đường bộ thì chỉ líên quan đến đường không bao gồm công trình phụ trợ",
+                "top50": 1
+            },
+            {
+                "id": 2,
+                "content": "Khái niệm \"công trình đường bộ\" được hiểu như thế nào là đúng ? ",
+                "img": null,
+                "answers": [
+                    {
+                        "id": 4,
+                        "content": "1- Đường bộ, nơi dừng xe, đỗ xe trên đường bộ , đèn tín hiệu, biển báo hiệu, vạch kẻ đường, cọc tiêu",
+                        "check": 1
+                    },
+                    {
+                        "id": 5,
+                        "content": "2- Rào chắn, đảo giao thông, dải phân cách, cột cây số, tường, kè, hệ thống thoát nước, trạm kiểm tra trọng tải xe, trạm thu phí và các công trình, thiết bị phụ trợ khác",
+                        "check": 1
+                    },
+                    {
+                        "id": 6,
+                        "content": "3- Đường bộ, nơi dừng xe, đỗ xe trong khu vực nhà ga đường sắt, cảng hàng không",
+                        "check": 0
+                    }
+                ],
+                "explain": "Công trình đường bộ không bao gồm đường bộ trong nhà ga, đường sắt, hải cảng hàng không. Còn lại đều đúng.",
+                "top50": 1
+            },
+            {
+                "id": 3,
+                "content": "“ VẠCH KẺ ĐƯỜNG ” ĐƯỢC HIỂU NHƯ THẾ NÀO LÀ ĐÚNG ?",
+                "img": null,
+                "answers": [
+                    {
+                        "id": 7,
+                        "content": "1- Vạch kẻ đường là vạch chỉ sự phân chia làn đường , trí hoặc hướng đi , vị trí dừng lại ",
+                        "check": 1
+                    },
+                    {
+                        "id": 8,
+                        "content": "2- Vạch kẻ đường là vạch chỉ sự phân biệt vị trí dừng, đổ trên đường",
+                        "check": 0
+                    },
+                    {
+                        "id": 9,
+                        "content": "3- Tất cả các ý nêu trên",
+                        "check": 0
+                    }
+                ],
+                "explain": null,
+                "top50": 0
+            },
+            {
+                "id": 4,
+                "content": "KHÁI NIỆM “ PHẦN ĐƯỜNG XE CHẠY ĐƯỢC HIỂU NHƯ THẾ NÀO LÀ ĐÚNG ? ",
+                "img": null,
+                "answers": [
+                    {
+                        "id": 10,
+                        "content": "1- Là phần của đường bộ được sử dụng cho các phương tiện giao thông qua lại",
+                        "check": 1
+                    },
+                    {
+                        "id": 11,
+                        "content": "2- Là phần đường bộ được sử dụng cho các phương tiện giao thông qua lại, dải đất dọc hai bên đường để đảm bảo an toàn giao thông",
+                        "check": 0
+                    },
+                    {
+                        "id": 12,
+                        "content": "3- Là phần đường bộ được sử dụng cho các phương tiện giao thông qua lại, các công trình, thiết bị phụ trợ khác và dải đất dọc hai bên đường để đảm bảo an toàn giao thông",
+                        "check": 0
+                    }
+                ],
+                "explain": null,
+                "top50": 0
+            },
+            {
+                "id": 5,
+                "content": "KHÁI NIỆM “ LÀN ĐƯỜNG ” ĐƯỢC HIỂU NHƯ THẾ NÀO LÀ ĐÚNG ? ",
+                "img": null,
+                "answers": [
+                    {
+                        "id": 13,
+                        "content": "1- Là một phần của đường được chia theo chiều ngang của đường, có bề rộng đủ cho xe đỗ an toàn",
+                        "check": 0
+                    },
+                    {
+                        "id": 14,
+                        "content": "2- Là một phần của đường xe chạy được chia theo chiều dọc của đường , có bề rộng đủ cho xe chạy an toàn",
+                        "check": 1
+                    },
+                    {
+                        "id": 15,
+                        "content": "3- Cả 2 ý trên",
+                        "check": 0
+                    }
+                ],
+                "explain": null,
+                "top50": 0
+            },
+            {
+                "id": 6,
+                "content": "KHÁI NIỆM “ KHỔ GIỚI HẠN CỦA ĐƯỜNG BỘ ” ĐƯỢC HIỂU NHƯ THẾ NÀO LÀ ĐÚNG ? ",
+                "img": null,
+                "answers": [
+                    {
+                        "id": 16,
+                        "content": "1- Là khoảng trống có kích thước giới hạn về chiều cao , chiều rộng của đường , cầu , bến phà , hầm đường bộ để các xe kể cả hàng hóa xếp trên xe đi qua được an toàn",
+                        "check": 1
+                    },
+                    {
+                        "id": 17,
+                        "content": "2- Là khoảng trống có kích thước giới hạn về chiều rộng của đường, cầu, bến phà, hầm trên đường bộ để các xe kể cả hàng hóa xếp trên xe đi qua được an toàn",
+                        "check": 0
+                    },
+                    {
+                        "id": 18,
+                        "content": "3- Là khoảng trống có kích thước giới hạn về chiều cao của cầu, bến phà, hầm trên đường bộ để các xe đi qua được an toàn",
+                        "check": 0
+                    }
+                ],
+                "explain": null,
+                "top50": 0
+            },
+            {
+                "id": 7,
+                "content": "KHÁI NIỆM “ ĐƯỜNG PHỐ ĐƯỢC HIỂU NHƯ THẾ NÀO LÀ ĐÚNG ?",
+                "img": null,
+                "answers": [
+                    {
+                        "id": 19,
+                        "content": "1- Đường phố là đường đô thị , gồm lòng đường và hè phố",
+                        "check": 1
+                    },
+                    {
+                        "id": 20,
+                        "content": "2- Đường phố là đường bộ ngoài đô thị có lòng đường đủ rộng cho các phương tiện giao thông qua lại",
+                        "check": 0
+                    },
+                    {
+                        "id": 21,
+                        "content": "3- Cả 2 ý nêu trên",
+                        "check": 0
+                    }
+                ],
+                "explain": null,
+                "top50": 0
+            },
+            {
+                "id": 8,
+                "content": "KHÁI NIỆM “ DẢI PHÂN CÁCH ” ĐƯỢC HIỂU NHƯ THẾ NÀO LÀ ĐÚNG ?",
+                "img": null,
+                "answers": [
+                    {
+                        "id": 22,
+                        "content": "1- Là bộ phận của đường để phân chia mặt đường thành | hai chiều xe chạy riêng biệt hoặc để phân chia phần đường của xe cơ giới và xe thô sơ",
+                        "check": 1
+                    },
+                    {
+                        "id": 23,
+                        "content": "2- Là bộ phận của đường để xác định ranh giới của đất dành cho đường bộ theo chiều ngang của đường",
+                        "check": 0
+                    },
+                    {
+                        "id": 24,
+                        "content": "3- Là bộ phận của đường để ngăn cách không cho các loại xe vào những nơi không được phép",
+                        "check": 0
+                    }
+                ],
+                "explain": null,
+                "top50": 0
+            },
+            {
+                "id": 9,
+                "content": "DẢI PHÂN CÁCH TRÊN ĐƯỜNG BỘ CÓ NHỮNG LOẠI NÀO ? ",
+                "img": null,
+                "answers": [
+                    {
+                        "id": 25,
+                        "content": "1- Loại cố định",
+                        "check": 1
+                    },
+                    {
+                        "id": 26,
+                        "content": "2- Loại di động",
+                        "check": 1
+                    }
+                ],
+                "explain": null,
+                "top50": 0
+            },
+            {
+                "id": 10,
+                "content": "KHÁI NIỆM “ ĐƯỜNG CAO TỐC ” ĐƯỢC HIỂU NHƯ THẾ NÀO LÀ ĐÚNG ? ",
+                "img": null,
+                "answers": [
+                    {
+                        "id": 27,
+                        "content": "1- Là đường dành cho xe cơ giới , có dải phân cách chia đường cho xe chạy hai chiều riêng biệt , không giao nhau cùng mức với một hoặc các đường khác ; được bố trí đầy đủ trang thiết bị phục vụ , đảm bảo giao thông liên tục , an toàn , rút ngắn thời gian hành trình và chỉ cho xe ra , vào ở những điểm nhất định",
+                        "check": 1
+                    },
+                    {
+                        "id": 28,
+                        "content": "2- là đường chỉ dành cho xe cơ giới chạy với tốc độ cao, có dải phân cách chia đường cho xe chạy hai chiều ngược nhau riêng biệt; không giao cắt cùng mức với đường khác, bố trí đầy đủ các trang thiết bị phục vụ đảm bảo giao thông an toàn và rút ngắn thời gian hành trình",
+                        "check": 0
+                    }
+                ],
+                "explain": null,
+                "top50": 0
+            },
+            {
+                "id": 11,
+                "content": "KHÁI NIỆM “ ĐƯỜNG CHÍNH ” ĐƯỢC HIỂU NHƯ THẾ NÀO LÀ ĐÚNG ? ",
+                "img": null,
+                "answers": [
+                    {
+                        "id": 29,
+                        "content": "1- Đường chính là đường đảm bảo giao thông chủ yếu trong khu vực ",
+                        "check": 1
+                    },
+                    {
+                        "id": 30,
+                        "content": "2- Đường chính là đường quốc lộ được đặt tên, số hiệu do cơ quan có thẩm quyền nhân loại và quyết định",
+                        "check": 0
+                    },
+                    {
+                        "id": 31,
+                        "content": "3- Đường chính là đường trong đô thị hoặc đường tỉnh",
+                        "check": 0
+                    }
+                ],
+                "explain": null,
+                "top50": 0
+            },
+            {
+                "id": 12,
+                "content": "KHÁI NIỆM “ ĐƯỜNG ƯU TIÊN ” ĐƯỢC HIỂU NHƯ THẾ NÀO LÀ ĐÚNG ? ",
+                "img": null,
+                "answers": [
+                    {
+                        "id": 32,
+                        "content": "1- Đường ưu tiên là đường mà trên đó phương tiện tham gia giao thông đường bộ phải nhường đường cho các phương tiện đến từ hướng khác khi qua nơi giao nhau, có thể được cắm biển báo hiệu đường ưu tiên",
+                        "check": 0
+                    },
+                    {
+                        "id": 33,
+                        "content": "2- Đường ưu tiên là đường mà trên đó phương tiện tham gia giao thông đường bộ được các phương tiện đến từ hướng khác nhường đường khi qua nơi đường giao nhau , được cắm biển báo hiệu đường ưu tiên",
+                        "check": 1
+                    },
+                    {
+                        "id": 34,
+                        "content": "3- Đường ưu tiên là đường chỉ dành cho một số loại phương tiện giao thông , được cắm biển báo hiệu đường ưu tiên",
+                        "check": 0
+                    }
+                ],
+                "explain": null,
+                "top50": 0
+            },
+            {
+                "id": 13,
+                "content": "PHƯƠNG TIỆN GIAO THÔNG ĐƯỜNG BỘ ” GỒM NHỮNG LOẠI NÀO ? ",
+                "img": null,
+                "answers": [
+                    {
+                        "id": 35,
+                        "content": "1- Phương tiện giao thông cơ giới đường bộ , phương tiện | giao thông thô sơ đường bộ ",
+                        "check": 1
+                    },
+                    {
+                        "id": 36,
+                        "content": "2- Phương tiện giao thông thô sơ đường bộ, phương tiện giao thông cơ giới đường bộ và xe máy chuyên dụng",
+                        "check": 0
+                    },
+                    {
+                        "id": 37,
+                        "content": "3- Cả 2 ý nêu trên",
+                        "check": 0
+                    }
+                ],
+                "explain": "Xe máy chuyên dùng không thuộc vào phương tiện giao thông đường bộ. Nó thuộc vào phương tiện giao thông cơ giới đường bộ.",
+                "top50": 1
+            },
+            {
+                "id": 14,
+                "content": "KHÁI NIỆM PHƯƠNG TIỆN GIAO THÔNG cƠ GIỚI ĐƯỜNG BỘ ” . ĐƯỢC HIỂU THẾ NÀO LÀ ĐÚNG ? ",
+                "img": null,
+                "answers": [
+                    {
+                        "id": 38,
+                        "content": "1- Gồm xe ô tô, máy kéo, xe mô tô hai bánh, xe mô tô ba bánh, xe gắn máy, xe cơ giới dùng cho người khuyết tật và xe máy chuyên dụng",
+                        "check": 0
+                    },
+                    {
+                        "id": 39,
+                        "content": "2- Gồm xe ô tô ; máy kéo , rơ moóc hoặc sơ mi rơ moóc được kéo bởi xe ô tô , máy kéo ; xe mô tô hai bánh ; xe mô tô ba bánh ; xe gắn máy ( kể cả xe máy đến ) và các loại xe tương tự",
+                        "check": 1
+                    }
+                ],
+                "explain": "Phương tiện giao thông cơ giới đường bộ là bao gồm tất cả các loại xe lưu thông được trên đường trừ xe thô sơ.",
+                "top50": 1
+            },
+            {
+                "id": 15,
+                "content": "KHÁI NIỆM “ PHƯƠNG TIỆN GIAO THÔNG THÔ SƠ ĐƯỜNG BỘ ” ĐƯỢC HIỂU NHƯ THẾ NÀO LÀ ĐÚNG ? ",
+                "img": null,
+                "answers": [
+                    {
+                        "id": 40,
+                        "content": "1- Gồm xe đạp ( kể cả xe đạp máy ) , xe xích lô , xe lăn dùng cho người khuyết tật , xe súc vật kéo và các loại xe tương tự ",
+                        "check": 1
+                    },
+                    {
+                        "id": 41,
+                        "content": "2- Gồm xe ô tô, máy kéo, xe mô tô hai bánh, xe mô tô ba bánh, xe gắn máy, xe cơ giới chuyên dùng cho người khuyết tật và xe máy chuyên dụng",
+                        "check": 0
+                    },
+                    {
+                        "id": 42,
+                        "content": "3- Gồm xe ô tô, xe máy, rơ noóc hoặc sơ mi rơ moóc được kéo bởi xe ô tô, máy kéo, xe mô tô hai bánh, xe mô tô ba bánh, xe gắn máy và các loại xe tương tự",
+                        "check": 0
+                    }
+                ],
+                "explain": null,
+                "top50": 0
+            },
+            {
+                "id": 16,
+                "content": "“ PHƯƠNG TIỆN THAM GIA GIAO THÔNG ĐƯỜNG BỘ ” GỒM NHỮNG LOẠI NÀO ?",
+                "img": null,
+                "answers": [
+                    {
+                        "id": 43,
+                        "content": "1- Phương tiện giao thông cơ giới đường bộ",
+                        "check": 1
+                    },
+                    {
+                        "id": 44,
+                        "content": "2- Phương tiện giao thông thô sơ đường bộ và xe máy chuyên dùng",
+                        "check": 1
+                    }
+                ],
+                "explain": "Phương tiện giao thông đường bộ gồm phương tiện giao thông cơ giới đường bộ, phương tiện giao thông thô sơ đường bộ.",
+                "top50": 1
+            },
+            {
+                "id": 17,
+                "content": "“ NGƯỜI THAM GIA GIAO THÔNG ĐƯỜNG BỘ ” | GỒM NHỮNG ĐỐI TƯỢNG NÀO ? ",
+                "img": null,
+                "answers": [
+                    {
+                        "id": 45,
+                        "content": "1- Người điều khiển , người sử dụng phương tiện tham gia giao thông đường bộ",
+                        "check": 1
+                    },
+                    {
+                        "id": 46,
+                        "content": "2- Người điều khiển , dẫn dắt súc vật , người đi bộ trên đường bộ",
+                        "check": 1
+                    }
+                ],
+                "explain": null,
+                "top50": 0
+            },
+            {
+                "id": 18,
+                "content": "“ NGƯỜI ĐIỀU KHIỂN PHƯƠNG TIỆN THAM GIA GIAO THÔNG GỒM NHỮNG ĐỐI TƯỢNG NÀO ? ",
+                "img": null,
+                "answers": [
+                    {
+                        "id": 47,
+                        "content": "1- Người điều khiển xe cơ giới , người điều khiển xe thô sở",
+                        "check": 1
+                    },
+                    {
+                        "id": 48,
+                        "content": "2- Người điều khiển xe máy chuyên dùng tham gia giao thông đường bộ",
+                        "check": 1
+                    }
+                ],
+                "explain": null,
+                "top50": 0
+            },
+            {
+                "id": 19,
+                "content": "KHÁI NIỆM “ NGƯỜI ĐIỀU KHIỂN GIAO THÔNG ” ĐƯỢC HIỂU NHƯ THẾ NÀO LÀ ĐÚNG ? ",
+                "img": null,
+                "answers": [
+                    {
+                        "id": 49,
+                        "content": "1- Là người điều khiển phương tiện tham gia giao thông",
+                        "check": 0
+                    },
+                    {
+                        "id": 50,
+                        "content": "2- Là người được giao nhiệm vụ hướng dẫn giao thông tại nơi thi công , nơi ùn tắc giao thông , ở bến phà , tại cầu đường bộ đi chung với đường sắt",
+                        "check": 1
+                    },
+                    {
+                        "id": 51,
+                        "content": "3- Là cảnh sát giao thông",
+                        "check": 1
+                    },
+                    {
+                        "id": 52,
+                        "content": "4- Tất cả các ý nêu trên",
+                        "check": 0
+                    }
+                ],
+                "explain": "Người điều khiển giao thông không phải là người điều khiển phương tiện tham gia giao thông. Câu trả lời 1 và 4 là sai.",
+                "top50": 1
+            },
+            {
+                "id": 20,
+                "content": "KHÁI NIỆM “ DỪNG XE ” ĐƯỢC HIỂU NHƯ THẾ NÀO LÀ ĐÚNG QUY TẮC GIAO THÔNG ? ",
+                "img": null,
+                "answers": [
+                    {
+                        "id": 53,
+                        "content": "1- Dừng xe là trạng thái đứng yên của phương tiện giao thông không giới hạn thời gian dể cho người lên, xuống phương tiện đó, xếp dwox hàng hóa hoặc thực hiện công việc khác",
+                        "check": 0
+                    },
+                    {
+                        "id": 54,
+                        "content": "2- Dừng xe là trạng thái đứng yên tạm thời của phương tiện giao thông trong một khoảng thời gian cần thiết đủ để cho người lên , xuống phương tiện , xếp dỡ hàng hóa hoặc thực hiện công việc khác",
+                        "check": 1
+                    },
+                    {
+                        "id": 55,
+                        "content": "3- Cả hai ý nêu trên",
+                        "check": 0
+                    }
+                ],
+                "explain": null,
+                "top50": 0
+            },
+            {
+                "id": 21,
+                "content": "KHÁI NIỆM “ ĐỖ XE ” ĐƯỢC HIỂU NHƯ THẾ NÀO LÀ ĐÚNG QUY TẮC GIAO THÔNG ? ",
+                "img": null,
+                "answers": [
+                    {
+                        "id": 56,
+                        "content": "1- Phá hoại đường, cầu, hâm, bên phà đường bộ, phá hoại đèn tín hiệu, cọc tiêu, biển báo hiệu, gương cầu, dải phân cách.",
+                        "check": null
+                    },
+                    {
+                        "id": 57,
+                        "content": "2- Phá hoại hệ thống thoát nước và các công trình, thiết bị khác thuộc kết cấu hạ tầng giao thông đường bộ.",
+                        "check": null
+                    }
+                ],
+                "explain": null,
+                "top50": 0
+            },
+            {
+                "id": 22,
+                "content": "CÁC HÀNH VI NÀO GHI Ở DƯỚI ĐÂY BỊ NGHIÊM CẤM ? ",
+                "img": null,
+                "answers": [
+                    {
+                        "id": 58,
+                        "content": "1- Lắp đặt, sử dụng còi, đèn không đúng thiết kế của nhà sản xuất đối với từng loại xe cơ giới.",
+                        "check": null
+                    },
+                    {
+                        "id": 59,
+                        "content": "2- Sử dụng thiết bị âm thanh gây mất trật tự an toàn giao thông, trật tự công cộng.",
+                        "check": null
+                    }
+                ],
+                "explain": null,
+                "top50": 0
+            },
+            {
+                "id": 23,
+                "content": "HÀNH VI ĐƯA XE CƠ GIỚI , XE MÁY CHUYÊN DÙNG KHÔNG BẢO ĐẢM TIÊU CHUẨN AN TOÀN KỸ THUẬT VÀ BẢO VỆ MÔI TRƯỜNG THAM GIA GIAO THÔNG ĐƯỜNG BỘ CÓ BỊ NGHIÊM CẤM HAY KHÔNG ?",
+                "img": null,
+                "answers": [
+                    {
+                        "id": 60,
+                        "content": "1- Không nghiêm cấm.",
+                        "check": "s"
+                    },
+                    {
+                        "id": 61,
+                        "content": "2- Bị nghiêm cấm.",
+                        "check": null
+                    },
+                    {
+                        "id": 62,
+                        "content": "3- Bị nghiêm cấm tuỳ theo các tuyến đường.",
+                        "check": null
+                    },
+                    {
+                        "id": 63,
+                        "content": "4- Bị nghiêm cấm tuỳ theo loại xe.",
+                        "check": null
+                    }
+                ],
+                "explain": null,
+                "top50": 0
+            },
+            {
+                "id": 24,
+                "content": "NHỮNG HÀNH VI NÀO GHI Ở DƯỚI ĐÂY BỊ NGHIÊM CẤM ?",
+                "img": null,
+                "answers": [],
+                "explain": null,
+                "top50": 0
+            },
+            {
+                "id": 25,
+                "content": "NGƯỜI ĐIỀU KHIỂN PHƯƠNG TIỆN GIAO THÔNG ĐƯỜNG BỘ MÀ TRONG CƠ THỂ có CHẤT MA TÚY có BỊ NGHIÊM CẤM HAY KHÔNG ? ",
+                "img": null,
+                "answers": [],
+                "explain": null,
+                "top50": 0
+            },
+            {
+                "id": 26,
+                "content": "NGƯỜI ĐIỀU KHIỂN XE Ô TÔ , MÁY KÉO , XE MÁY CHUYÊN DÙNG TRÊN ĐƯỜNG MÀ TRONG MÁU HOẶC HƠI THỞ CÓ NỒNG ĐỘ CỒN VƯỢT QUÁ BAO NHIÊU THÌ BỊ CẤM ?",
+                "img": null,
+                "answers": [],
+                "explain": "Điều khiển xe ô tô thì không được phép có nồng độ cồn (câu 2)",
+                "top50": 1
+            },
+            {
+                "id": 27,
+                "content": "NGƯỜI ĐIỀU KHIỂN XE MÔ TÔ , XE GẮN MÁY TRÊN ĐƯỜNG MÀ TRONG MÁU CÓ NỒNG ĐỘ cỒN VƯỢT QUÁ BAO NHIÊU THÌ BỊ CẤM ? ",
+                "img": null,
+                "answers": [],
+                "explain": null,
+                "top50": 0
+            },
+            {
+                "id": 28,
+                "content": "NGƯỜI ĐIỀU KHIỂN XE MÔ TÔ , XE GẮN MÁY TRÊN ĐƯỜNG MÀ TRONG KHÍ THỞ có NỒNG ĐỘ CỒN VƯỢT QUÁ BAO NHIÊU THÌ BỊ CẤM ?",
+                "img": null,
+                "answers": [],
+                "explain": null,
+                "top50": 0
+            },
+            {
+                "id": 29,
+                "content": "HÀNH VI GIAO XE CƠ GIỚI , XE MÁY CHUYÊN DÙNG CHO NGƯỜI KHÔNG ĐỦ ĐIỀU KIỆN ĐỂ ĐIỀU KHIỂN XE THAM GIA GIAO THÔNG CÓ BỊ NGHIÊM CẤM HAY KHÔNG ? ",
+                "img": null,
+                "answers": [],
+                "explain": null,
+                "top50": 0
+            },
+            {
+                "id": 30,
+                "content": "HÀNH VI ĐIỀU KHIỂN XE CƠ GIỚI CHẠY QUÁ TỐC ĐỘ QUY ĐỊNH , GIÀNH ĐƯỜNG , VƯỢT ẨU CÓ BỊ NGHIÊM CẤM HAY KHÔNG ? ",
+                "img": null,
+                "answers": [],
+                "explain": null,
+                "top50": 0
+            },
+            {
+                "id": 31,
+                "content": "NHỮNG HÀNH VI NÀO SAU ĐÂY BỊ CẤM ?",
+                "img": null,
+                "answers": [],
+                "explain": null,
+                "top50": 0
+            },
+            {
+                "id": 32,
+                "content": "CÁC HÀNH VI NÀO SAU ĐÂY | BỊ NGHIÊM CẤM ? ",
+                "img": null,
+                "answers": [],
+                "explain": null,
+                "top50": 0
+            },
+            {
+                "id": 33,
+                "content": "TRONG HOẠT ĐỘNG VẬN TẢI ĐƯỜNG BỘ . CÁC HÀNH VI NÀO SAU ĐÂY BỊ NGHIÊM CẤM ? ",
+                "img": null,
+                "answers": [],
+                "explain": null,
+                "top50": 0
+            },
+            {
+                "id": 34,
+                "content": "TRONG HOẠT ĐỘNG VẬN TẢI KHÁCH , NHỮNG HÀNH VI NÀO GHI Ở DƯỚI ĐÂY BỊ CẤM ? ",
+                "img": null,
+                "answers": [],
+                "explain": null,
+                "top50": 0
+            },
+            {
+                "id": 35,
+                "content": "HÀNH VI BỎ TRỐN SAU KHI G Y TAI NẠN ĐỂ TRỐN TRÁNH TRÁCH NHIỆM HOẶC KHI CÓ ĐIỀU KIỆN MÀ cố Ý KHÔNG CỨU GIÚP NGƯỜI BỊ TAI NẠN GIAO THÔNG có BỊ NGHIÊM CẤM HAY KHÔNG ? ",
+                "img": null,
+                "answers": [],
+                "explain": null,
+                "top50": 0
+            },
+            {
+                "id": 36,
+                "content": "KHI XẢY RA TAI NẠN GIAO THÔNG NHỮNG HÀNH VI NÀO GHI Ở DƯỚI Đ Y BỊ NGHIÊM CẤM ?",
+                "img": null,
+                "answers": [],
+                "explain": null,
+                "top50": 0
+            },
+            {
+                "id": 37,
+                "content": "NHỮNG HÀNH VI NÀO GHI Ở DƯỚI Đ Y BỊ NGHIÊM CẤM ? ",
+                "img": null,
+                "answers": [],
+                "explain": null,
+                "top50": 0
+            },
+            {
+                "id": 38,
+                "content": "VIỆC SẢN XUẤT , MUA BÁN , SỬ DỤNG BIỂN SỐ XE CƠ GIỚI , XE MÁY CHUYÊN DÙNG ĐƯỢC QUY ĐỊNH NHƯ THẾ NÀO TRONG LUẬT GIAO THÔNG ĐƯỜNG BỘ ? ",
+                "img": null,
+                "answers": [],
+                "explain": null,
+                "top50": 0
+            },
+            {
+                "id": 39,
+                "content": "NGƯỜI LÁI XE KHÔNG ĐƯỢC VƯỢT XE KHÁC KHI GẶP TRƯỜNG HỢP NÀO GHI Ở DƯỚI Đ Y ? ",
+                "img": null,
+                "answers": [],
+                "explain": null,
+                "top50": 0
+            },
+            {
+                "id": 40,
+                "content": "Ở NHỮNG NƠI NÀO KHÔNG ĐƯỢC QUAY ĐẦU XE ? ",
+                "img": null,
+                "answers": [],
+                "explain": null,
+                "top50": 0
+            },
+            {
+                "id": 41,
+                "content": "Ở NHỮNG NƠI NÀO KHÔNG ĐƯỢC LÙI XE ?",
+                "img": null,
+                "answers": [],
+                "explain": null,
+                "top50": 0
+            },
+            {
+                "id": 42,
+                "content": "NGƯỜI ĐIỀU KHIỂN PHƯƠNG TIỆN GIAO THÔNG TRÊN ĐƯỜNG PHỐ CÓ ĐƯỢC DỪNG XE , ĐỖ XE TRÊN ĐƯỜNG XE ĐIỆN , TRÊN MIỆNG CỐNG THOÁT NƯỚC , MIỆNG HẦM CỦA ĐƯỜNG ĐIỆN THOẠI , ĐIỆN CAO THẾ , CHỖ DÀNH RIÊNG CHO XE CHỮA CHÁY LẤY NƯỚC HAY KHÔNG ? ",
+                "img": null,
+                "answers": [],
+                "explain": null,
+                "top50": 0
+            },
+            {
+                "id": 43,
+                "content": "KHI ĐIỀU KHIỂN XE TRÊN ĐƯỜNG CAO TỐC , NHỮNG VIỆC NÀO KHÔNG CHO PHÉP ? ",
+                "img": null,
+                "answers": [],
+                "explain": "Không được phép cho xe chạy ở làn dừng xe khẩn cấp là đúng rồi.",
+                "top50": 1
+            },
+            {
+                "id": 44,
+                "content": "KHI XE KÉO XE VÀ XE KÉO RƠ MOÓC , NHỮNG HÀNH VI NÀO KHÔNG ĐƯỢC PHÉP ? ",
+                "img": null,
+                "answers": [],
+                "explain": null,
+                "top50": 0
+            },
+            {
+                "id": 45,
+                "content": "NGƯỜI ĐIỀU KHIỂN XE MÔ TÔ HAI BÁNH , BA BÁNH , XE GẮN MÁY CÓ ĐƯỢC PHÉP SỬ DỤNG XE ĐỂ KÉO , ĐẤY CÁC XE KHÁC , VẬT KHÁC KHI THAM GIA GIAO THÔNG KHÔNG ? ",
+                "img": null,
+                "answers": [],
+                "explain": null,
+                "top50": 0
+            },
+            {
+                "id": 46,
+                "content": "NGƯỜI NGỒI TRÊN XE MÔ TÔ HAI BÁNH , BA BÁNH , XE GẮN MÁY KHI THAM GIA GIAO THÔNG KHÔNG ĐƯỢC THỰC HIỆN NHỮNG HÀNH VI NÀO DƯỚI Đ Y ",
+                "img": null,
+                "answers": [],
+                "explain": null,
+                "top50": 0
+            },
+            {
+                "id": 47,
+                "content": "NGƯỜI NGỒI TRÊN XE MÔ TÔ HAI BÁNH , XE MÔ TÔ BA BÁNH , XE GẮN MÁY KHI THAM GIA GIAO THÔNG CÓ ĐƯỢC MANG , VÁC VẬT CỒNG KỀNH HAY KHÔNG ? ",
+                "img": null,
+                "answers": [],
+                "explain": null,
+                "top50": 0
+            },
+            {
+                "id": 48,
+                "content": "KHI ĐIỀU KHIỂN XE MÔ TÔ HAI BÁNH , XE MÔ TÔ BA BÁNH , XE GẮN MÁY , NHỮNG HÀNH VI NÀO KHÔNG ĐƯỢC PHÉP ? ",
+                "img": null,
+                "answers": [],
+                "explain": null,
+                "top50": 0
+            },
+            {
+                "id": 49,
+                "content": "VIỆC HỌP CHỢ , TỤ TẬP ĐÔNG NGƯỜI TRÁI PHÉP THẢ RÔNG SÚC VẬT TRÊN ĐƯỜNG BỘ CÓ ĐƯỢC PHÉP HAY KHÔNG ?",
+                "img": null,
+                "answers": [],
+                "explain": null,
+                "top50": 0
+            },
+            {
+                "id": 50,
+                "content": "BẢO ĐẢM TRẬT TỰ , AN TOÀN GIAO THÔNG ĐƯỜNG BỘ LÀ TRÁCH NHIỆM CỦA AI ?",
+                "img": null,
+                "answers": [],
+                "explain": null,
+                "top50": 0
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "type": "Văn hóa, đạo đức nghề nghiệp người lái xe",
+        "description": "Có 1/5 câu hỏi:\nCâu 76 đến câu 80",
+        "question": []
+    },
+    {
+        "id": 4,
+        "type": "Hệ thống biển báo hiệu đường bộ",
+        "description": "Có 5/35 câu hỏi:\nCâu 81 đến câu 115",
+        "question": []
+    },
+    {
+        "id": 5,
+        "type": "Giải các thế sa hình",
+        "description": "Có 5/35 câu hỏi: \nCâu 116 đến câu 150",
+        "question": []
+    }
+]
